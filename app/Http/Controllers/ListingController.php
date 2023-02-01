@@ -16,4 +16,8 @@ class ListingController extends Controller
         $listing = Listing::find($id);
         return view('listing.show', ['listing' => $listing]);
     }
+
+    public function create() {
+        return view('listing.create');
+    }
 }
