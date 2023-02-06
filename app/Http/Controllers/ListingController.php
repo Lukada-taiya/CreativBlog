@@ -30,8 +30,11 @@ class ListingController extends Controller
             'email' => 'required|email',
             'tags' => 'required',
             'description' => 'required'
-        ]);
+        ]); 
 
+        if($request->hasFile('logo')) { 
+            $fields['logo'] = $request->file('logo')->store('logos', 'public');
+        } 
         Listing::create($fields);
         return redirect('/')->with('message', "Listing created successfully");
     }
