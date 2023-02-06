@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('tags');
+            $table->string('logo')->nullable();
             $table->string('company');
             $table->string('email');
             $table->string('location');
