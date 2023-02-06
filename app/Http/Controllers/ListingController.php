@@ -33,6 +33,6 @@ class ListingController extends Controller
         ]);
 
         Listing::create($fields);
-        return redirect('/');
+        return redirect('/')->with('message', "Listing created successfully");
     }
 }

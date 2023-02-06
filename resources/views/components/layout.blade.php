@@ -12,6 +12,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <script src="//unpkg.com/alpinejs" defer></script>
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
@@ -27,6 +28,7 @@
         <title>CreativBlog | Find Laravel Jobs & Projects</title>
     </head>
     <body class="mb-48">
+    <x-sessionmessage/>
         <nav class="flex justify-between items-center mb-4">
             <a href="/"
                 ><img class="w-24" src="{{ asset("images/logo.png") }}" alt="image" class="logo"
