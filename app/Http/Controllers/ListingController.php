@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ListingController extends Controller
 {
     public function index()  {
-        $listings = Listing::latest()->filter(request(['tags', 'search']))->get();
+        $listings = Listing::latest()->filter(request(['tags', 'search']))->paginate(6);
         return view('listing.index', ['listings' => $listings]);
     }
 
