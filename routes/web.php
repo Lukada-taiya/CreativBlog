@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ListingController; 
+use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,7 @@ Route::get('listings/{listing}', [ListingController::class, 'show']);
 Route::get('listings/{listing}/edit', [ListingController::class, 'edit']);
 Route::put('listings/{listing}', [ListingController::class, 'update']);
 Route::delete('listings/{listing}', [ListingController::class, 'destroy']);
+
+Route::get('register', [UserController::class, 'register']);
+Route::post('users', [UserController::class, 'store']);
+Route::post('logout', [UserController::class, 'logout']);
