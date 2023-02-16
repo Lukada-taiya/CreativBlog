@@ -41,11 +41,20 @@ class ListingController extends Controller
         return redirect('/')->with('message', "Listing created successfully");
     }
 
+    public function manage()
+    {
+        return view('listing.manage', ['listings' => auth()->user()->listings()->get()]);
+    }
+
     public function edit(Listing $listing) {
         return view('listing.edit', ['listing' => $listing]);
     }
 
     public function update(Request $request, Listing $listing) {
+        if($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Access');
+        }
+
         $fields = $request->validate([
             'title' => 'required',
             'company' => 'required',
@@ -64,7 +73,11 @@ class ListingController extends Controller
     }
 
     public function destroy(Listing $listing) {
+        if($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Access');
+        }
         $listing->delete();
         return redirect('/')->with('message', 'Listing deleted successfully');
     }
 }
+
